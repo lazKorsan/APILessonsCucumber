@@ -1,6 +1,5 @@
-package generators;
+package utilities;
 
-import utilities.StepDefinitionsGenerator;
 import java.util.*;
 
 public class BatchStepGenerator {

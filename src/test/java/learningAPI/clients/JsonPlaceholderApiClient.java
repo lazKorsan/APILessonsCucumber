@@ -20,6 +20,9 @@ public class JsonPlaceholderApiClient extends BaseTest {
                 .spec(specJsonPlaceholder) // BaseTest'ten gelen ortak ayarları kullan
                 .body(post)
         .when()
-                .put("/posts/" + postId);
+                .put("/posts/" + postId)
+        .then()
+                .spec(specOk) // .statusCode(200) yerine merkezi doğrulama şablonunu kullan
+                .extract().response(); // Doğrulanmış yanıtı (response) geri döndür
     }
 }

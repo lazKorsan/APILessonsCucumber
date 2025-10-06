@@ -1,4 +1,4 @@
-package tests;
+package stepdefinitions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.nio.charset.StandardCharsets;
 public class GoogleSearchExample {
 
     // Yeni API anahtarı ve Search Engine ID almanız gerekebilir
-    private static final String API_KEY = "YOUR_API_KEY_HERE";
-    private static final String SEARCH_ENGINE_ID = "YOUR_SEARCH_ENGINE_ID_HERE";
+    private static final String API_KEY = "2ecC1yGMUbcPi9V1YuXKJ5:2TLu6uoUy3ZDCvIS2xIsOuE";
+    private static final String SEARCH_ENGINE_ID = "92d19d034826a4f2f";
 
     public static void main(String[] args) {
         String query = "Java API documentation PDF";

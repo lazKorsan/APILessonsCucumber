@@ -2,15 +2,15 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Assertions;
 import utilities.ConfigReader;
 
 import static org.junit.Assert.assertEquals;
 
-public class JPHStepdefinitions {
+public class JPHSStepDefinitions {
 
     String url="";
     Response response;
@@ -54,5 +54,39 @@ public class JPHStepdefinitions {
 
     }
 
+    @Given("kullanici PUT request yapabilmek için {string},{string} , {int} {int} bilgileri ile reqBody olusturur")
+    public void kullanici_put_request_yapabilmek_icin_bilgileri_ile_req_body_olusturur(String title, String body, int userId, int id) {
+        reqBody = new JSONObject();
+        reqBody.put("title", title);
+        reqBody.put("body", body);
+        reqBody.put("userId", userId);
+        reqBody.put("id", id);
+    }
 
+    @Given("kullanici PUT request yaparak response bilgilerini kaydeder")
+    public void kullanici_put_request_yaparak_response_bilgilerini_kaydeder() {
+        response = RestAssured
+                .given()
+                .contentType(ContentType.JSON)
+                .when()
+                .body(reqBody.toString())
+                .put(url);
+    }
+
+    @Given("kullanici {string} header dergerinin {string} oldugunu test eder")
+    public void kullanici_header_dergerinin_oldugunu_test_eder(String headerName, String expHeaderValue) {
+        assertEquals(expHeaderValue, response.getHeader(headerName));
+    }
+
+    @Given("kullanici response id degerinin {int} oldugunu test eder")
+    public void kullanici_response_id_degerinin_oldugunu_test_eder(int expId) {
+        resJP = response.jsonPath();
+        assertEquals(expId, resJP.getInt("id"));
+    }
+
+    @Given("kullanici response userId degerinin {int} oldugunu test eder")
+    public void kullanici_response_user_id_degerinin_oldugunu_test_eder(int expUserId) {
+        resJP = response.jsonPath();
+        assertEquals(expUserId, resJP.getInt("userId"));
+    }
 }

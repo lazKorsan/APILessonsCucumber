@@ -14,7 +14,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class L4_UseSchemaAndMap {
+public class L5_UseSchemaAndMap {
 
     private static RequestSpecification spec;
     // Oluşturulan rezervasyonun ID'sini testler arasında taşımak için bir sınıf değişkeni.

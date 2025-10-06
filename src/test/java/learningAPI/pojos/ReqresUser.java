@@ -8,6 +8,7 @@ public class ReqresUser {
 
     private int id;
     private String email;
+    String response;
 
     // @JsonProperty anotasyonu, JSON'daki "first_name" alanını,
     // Java'daki "firstName" alanıyla eşleştirir. Bu işleme "deserialization" denir.
@@ -58,5 +59,9 @@ public class ReqresUser {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public void setResponse(String response){
+        this.response = response;
     }
 }

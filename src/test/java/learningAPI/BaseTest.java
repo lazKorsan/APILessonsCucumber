@@ -1,31 +1,37 @@
 package learningAPI;
 
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.BeforeAll;
 
-// Bu sınıf, projedeki tüm test sınıfları için bir temel (base) görevi görür.
-// Ortak ayarlar ve konfigürasyonlar bu sınıfta merkezi olarak yönetilir.
 public class BaseTest {
 
-    // protected erişim belirleyicisi, bu değişkenlerin bu sınıftan miras alan
-    // alt sınıflar tarafından doğrudan kullanılabilmesini sağlar.
     protected static RequestSpecification specBooker;
     protected static RequestSpecification specJsonPlaceholder;
 
+    // Tüm 200 OK yanıtları için ortak doğrulama kurallarını içeren şartname.
+    protected static ResponseSpecification specOk;
+
     @BeforeAll
     public static void setup() {
-        // Restful-Booker API için ortak ayarlar
+        // Request Specifications
         specBooker = new RequestSpecBuilder()
                 .setBaseUri("https://restful-booker.herokuapp.com")
                 .setContentType(ContentType.JSON)
                 .build();
 
-        // JSONPlaceholder API için ortak ayarlar
         specJsonPlaceholder = new RequestSpecBuilder()
                 .setBaseUri("https://jsonplaceholder.typicode.com")
                 .setContentType(ContentType.JSON)
+                .build();
+
+        // Response Specification
+        // Projedeki tüm 200 OK yanıtlarının uyması gereken temel kuralları burada tanımlarız.
+        specOk = new ResponseSpecBuilder()
+                .expectStatusCode(200)
                 .build();
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SchemaValidationSuite" parallel="tests" thread-count="3">
+
+    <test name="SchemaValidationTests">
+        <classes>
+            <class name="runners.ParallelTestRunner"/>
+        </classes>
+    </test>
+
+    <test name="SmokeTests">
+        <classes>
+            <class name="runners.SmokeTestRunner"/>
+        </classes>
+    </test>
+
+</suite>
+<!-- runner claslar testNg DEN AÇLIŞIR -->

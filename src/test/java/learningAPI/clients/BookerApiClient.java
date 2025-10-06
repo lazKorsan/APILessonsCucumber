@@ -1,6 +1,7 @@
 package learningAPI.clients;
 
 import io.restassured.response.Response;
+import learningAPI.BaseTest;
 import learningAPI.pojos.Booking;
 import learningAPI.pojos.BookingResponse;
 
@@ -34,7 +35,7 @@ public class BookerApiClient extends BaseTest {
         .when()
                 .post("/booking")
         .then()
-                .statusCode(200)
+                .spec(specOk) // .statusCode(200) yerine merkezi doğrulama şablonunu kullan
                 .extract().as(BookingResponse.class);
     }
 }

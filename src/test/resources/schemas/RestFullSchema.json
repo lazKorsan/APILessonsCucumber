@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "firstname",
+    "lastname",
+    "totalprice",
+    "depositpaid",
+    "bookingdates",
+    "additionalneeds"
+  ],
+  "properties": {
+    "firstname": {
+      "type": "string",
+      "description": "Kullanıcının adı"
+    },
+    "lastname": {
+      "type": "string",
+      "description": "Kullanıcının soyadı"
+    },
+    "totalprice": {
+      "type": "integer",
+      "description": "Toplam fiyat",
+      "minimum": 0
+    },
+    "depositpaid": {
+      "type": "boolean",
+      "description": "Depozito ödendi mi?"
+    },
+    "bookingdates": {
+      "type": "object",
+      "required": [
+        "checkin",
+        "checkout"
+      ],
+      "properties": {
+        "checkin": {
+          "type": "string",
+          "format": "date",
+          "description": "Giriş tarihi (YYYY-MM-DD formatında)"
+        },
+        "checkout": {
+          "type": "string",
+          "format": "date",
+          "description": "Çıkış tarihi (YYYY-MM-DD formatında)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "additionalneeds": {
+      "type": "string",
+      "description": "Ek ihtiyaçlar"
+    }
+  },
+  "additionalProperties": false
+}
