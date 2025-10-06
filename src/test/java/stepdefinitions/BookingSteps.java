@@ -50,12 +50,4 @@ public class BookingSteps {
     public void updateBooking() {
 
     }
-
-    @When("Create booking")
-    public void createBooking() {
-    }
 }
-
-
-
-
